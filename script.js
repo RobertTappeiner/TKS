@@ -223,6 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadArea = document.querySelector('.upload-file-area');
     const fileList = document.getElementById('fileList');
     const uploadMessage = document.querySelector('.upload-file-message');
+    const pdfLinkInput = document.getElementById('pdf_link');
+    const formStatus = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
     const maxFileSize = 5 * 1024 * 1024; // 5MB
     const allowedExtensions = ['.pdf', '.dwg', '.dxf'];
 
@@ -238,11 +241,87 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const contactForm = document.getElementById('contactForm');
+    let firebaseServicesPromise = null;
+
+    function getFirebaseConfig() {
+        const config = window.TKS_FIREBASE_CONFIG;
+        if (!config || typeof config !== 'object') return null;
+
+        const requiredKeys = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'appId'];
+        const isValid = requiredKeys.every((key) => typeof config[key] === 'string' && config[key].trim() !== '');
+
+        return isValid ? config : null;
+    }
+
+    async function getFirebaseServices() {
+        if (firebaseServicesPromise) return firebaseServicesPromise;
+
+        firebaseServicesPromise = (async () => {
+            const config = getFirebaseConfig();
+            if (!config) return null;
+
+            const [{ initializeApp }, { getStorage, ref, uploadBytes, getDownloadURL }] = await Promise.all([
+                import('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js'),
+                import('https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js')
+            ]);
+
+            const app = initializeApp(config, 'tks-contact-upload');
+            const storage = getStorage(app);
+            return { storage, ref, uploadBytes, getDownloadURL };
+        })();
+
+        return firebaseServicesPromise;
+    }
+
+    function sanitizeFileName(fileName) {
+        return fileName.replace(/[^a-zA-Z0-9._-]/g, '_');
+    }
+
+    function sanitizePathSegment(value) {
+        return value
+            .toString()
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, '_')
+            .replace(/[^a-z0-9_-]/g, '')
+            .replace(/_+/g, '_')
+            .replace(/^_+|_+$/g, '');
+    }
+
+    async function uploadFilesToFirebase(files, userName) {
+        if (!files.length) return [];
+
+        const firebase = await getFirebaseServices();
+        if (!firebase) return [];
+
+        const folder = (window.TKS_FIREBASE_STORAGE_PATH || 'contact_uploads').replace(/\/+$/, '');
+        const safeUserName = sanitizePathSegment(userName || '') || 'unknown_user';
+        const stamp = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+        const links = [];
+
+        for (let index = 0; index < files.length; index += 1) {
+            const file = files[index];
+            const safeFileName = sanitizeFileName(file.name);
+            const storageRef = firebase.ref(firebase.storage, `${folder}/${safeUserName}/${stamp}-${index}-${safeFileName}`);
+
+            await firebase.uploadBytes(storageRef, file, {
+                contentType: file.type || 'application/octet-stream'
+            });
+
+            const downloadUrl = await firebase.getDownloadURL(storageRef);
+            links.push(downloadUrl);
+        }
+
+        return links;
+    }
 
     function clearContactForm() {
         if (!contactForm) return;
         contactForm.reset();
         uploadedFiles = [];
+        if (pdfLinkInput) {
+            pdfLinkInput.value = '';
+        }
         renderFileList();
         syncFilesToInput();
     }
@@ -348,10 +427,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (contactForm) {
-        contactForm.addEventListener('submit', () => {
-            setTimeout(() => {
-                clearContactForm();
-            }, 0);
+        contactForm.addEventListener('submit', async (e) => {
+            if (contactForm.dataset.submitting === 'true') {
+                e.preventDefault();
+                return;
+            }
+
+            const hasFiles = uploadedFiles.length > 0;
+            if (!hasFiles) {
+                setTimeout(() => {
+                    clearContactForm();
+                }, 0);
+                return;
+            }
+
+            e.preventDefault();
+            contactForm.dataset.submitting = 'true';
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+            }
+
+            if (formStatus) {
+                formStatus.innerHTML = 'Dateien werden hochgeladen...';
+            }
+
+            try {
+                const nameField = contactForm.querySelector('input[name="name"]');
+                const userName = nameField ? nameField.value : '';
+                const links = await uploadFilesToFirebase(uploadedFiles, userName);
+
+                if (pdfLinkInput) {
+                    pdfLinkInput.value = links.join('\n');
+                }
+
+                syncFilesToInput();
+                contactForm.submit();
+                setTimeout(() => {
+                    clearContactForm();
+                }, 0);
+            } catch (error) {
+                console.error('Firebase Upload Fehler:', error);
+                if (formStatus) {
+                    formStatus.innerHTML = 'Upload fehlgeschlagen. Bitte erneut versuchen.';
+                }
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                }
+                contactForm.dataset.submitting = 'false';
+            }
         });
     }
 
