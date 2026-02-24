@@ -237,6 +237,16 @@ document.addEventListener('DOMContentLoaded', () => {
         fileInput.name = 'attachment';
     }
 
+    const contactForm = document.getElementById('contactForm');
+
+    function clearContactForm() {
+        if (!contactForm) return;
+        contactForm.reset();
+        uploadedFiles = [];
+        renderFileList();
+        syncFilesToInput();
+    }
+
     function syncFilesToInput() {
         const dataTransfer = new DataTransfer();
         uploadedFiles.forEach(file => dataTransfer.items.add(file));
@@ -336,4 +346,18 @@ document.addEventListener('DOMContentLoaded', () => {
             fileList.appendChild(fileItem);
         });
     }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', () => {
+            setTimeout(() => {
+                clearContactForm();
+            }, 0);
+        });
+    }
+
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            clearContactForm();
+        }
+    });
 });
