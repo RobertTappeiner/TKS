@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/icon/hexagon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="point.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>TKS - Elektrotechnik & Digitale Vermessung</title>
+</head>
+<body>
+    <div id="loader">
+        <div class="spinner"></div>
+        <div class="loading-text">Lade 3D Punktwolke…</div>
+    </div>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- MAIN CONTENT CONTAINER FOR CENTERING -->
+    <main class="viewer-main-container">
+        <div id="viewer">
+            <!-- Die Info-Box ist nun innerhalb des Viewers für bessere Positionierung -->
+            <div class="info">💡 Ziehen = drehen | Scroll = zoomen<br>Rechtsklick = verschieben</div>
+        </div>
+    </main>
+
+    <!-- FOOTER PLACEHOLDER (mit Fallback-Inhalt) -->
+    <div id="footer-placeholder">
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div>
+                        <h4 class="footer-title">TKS Solutions</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html#elektro">Elektrotechnik</a></li>
+                            <li><a href="index.html#survey">Vermessung</a></li>
+                            <li><a href="index.html#kontakt">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="footer-title">Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">PV-Anlagen</a></li>
+                            <li><a href="#">Drohnenvermessung</a></li>
+                            <li><a href="#">Elektroinstallation</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="footer-title">Unternehmen</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Über uns</a></li>
+                            <li><a href="#">Impressum</a></li>
+                            <li><a href="#">Datenschutz</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 TKS Solutions. Alle Rechte vorbehalten. | Thomas Koch &amp; Robert Tappeiner</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" }
+    }
+    </script>
+
+    <!-- SCRIPTS -->
+    <script src="include.js"></script>
+    <script type="module" src="point.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

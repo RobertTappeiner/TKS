@@ -1,0 +1,484 @@
+/* ============================================
+   TKS - BASE STYLES
+   Variables, Reset, Typography, Animations
+   ============================================ */
+
+/* CSS Variables */
+:root {
+    /* Light mode colors (Sun-Mode) */
+    --color-bg: #f0f4ff;
+    --color-fg: #0a0e27;
+    --color-card: #ffffff;
+    --color-border: #d1d5db;
+    --color-muted: #9ca3af;
+    --color-muted-fg: #6b7280;
+    --color-primary: #00d9ff;
+    --color-primary-dark: #0099cc;
+    --color-secondary: #ff006e;
+    --color-accent: #00f5ff;
+    --color-accent-glow: rgba(0, 217, 255, 0.3);
+    
+    /* Fonts */
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    
+    /* Other */
+    --radius: 8px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Navbar specific variables for easy adjustment */
+    --nav-bg: rgba(240, 244, 255, 0.95);
+    --nav-text: #0a0e27;
+    --nav-border: rgba(0, 217, 255, 0.2);
+    --nav-shadow: rgba(0, 217, 255, 0.1);
+    --nav-height: 4rem;
+
+    --mobile-menu-bg: whitesmoke;
+}
+
+/* Dark mode colors */
+html.dark {
+    --color-bg: #0a0e27;
+    --color-fg: #f0f4ff;
+    --color-card: #1a1f3a;
+    --color-border: #2d3561;
+    --color-muted: #4a5580;
+    --color-muted-fg: #a8b5d1;
+    
+    --nav-bg: rgba(10, 14, 39, 0.95);
+    --nav-text: #f0f4ff;
+    --nav-border: var(--color-border);
+    --nav-shadow: rgba(0, 217, 255, 0.1);
+
+    --mobile-menu-bg: rgba(26, 31, 58, 0.95);
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+code, .mono {
+    font-family: 'Space Mono', monospace;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+}
+
+/* Animations */
+@keyframes spin-cube {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    99% {
+        opacity: 0;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes slide-in-from-right {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes eye-catcher-circle-1 {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes eye-catcher-circle-2 {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.8) rotate(-360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes eye-catcher-circle-3 {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(2) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-text {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes step-slide-in {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes step-number-pop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes triangulate6214 {
+    0%, 100% {
+        transform: none;
+    }
+    33.333% {
+        transform: translate(120%, 175%);
+    }
+    66.666% {
+        transform: translate(-95%, 175%);
+    }
+}
+
+@keyframes grow7132 {
+    0%, 100% {
+        transform: scale(1.5);
+    }
+    20%, 70% {
+        transform: none;
+    }
+}
+
+@keyframes btn-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 9999;
+    animation: fade-out 0.8s ease-out 2.5s forwards;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: var(--spacing-md);
+}
+
+.loading-text {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    animation: float-up 0.6s ease-out;
+}
+
+/* Jelly Triangle Loader */
+.jelly-triangle {
+    --uib-size: 2.8rem;
+    --uib-speed: 1.75s;
+    --uib-color: #00d9ff;
+    position: relative;
+    height: var(--uib-size);
+    width: var(--uib-size);
+    filter: url('#uib-jelly-triangle-ooze');
+}
+
+.jelly-triangle__dot,
+.jelly-triangle::before,
+.jelly-triangle::after {
+    content: '';
+    position: absolute;
+    width: 33%;
+    height: 33%;
+    background: var(--uib-color);
+    border-radius: 100%;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.jelly-triangle__dot {
+    top: 6%;
+    left: 30%;
+    animation: grow7132 var(--uib-speed) ease infinite;
+}
+
+.jelly-triangle::before {
+    bottom: 6%;
+    right: 0;
+    animation: grow7132 var(--uib-speed) ease calc(var(--uib-speed) * -0.666) infinite;
+}
+
+.jelly-triangle::after {
+    bottom: 6%;
+    left: 0;
+    animation: grow7132 var(--uib-speed) ease calc(var(--uib-speed) * -0.333) infinite;
+}
+
+.jelly-triangle__traveler {
+    position: absolute;
+    top: 6%;
+    left: 30%;
+    width: 33%;
+    height: 33%;
+    background: var(--uib-color);
+    border-radius: 100%;
+    animation: triangulate6214 var(--uib-speed) ease infinite;
+}
+
+.jelly-maker {
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+/* 3D Cube Container */
+.cube-container {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    perspective: 1000px;
+    display: none;
+}
+
+@media (min-width: 1280px) {
+    .cube-container {
+        display: block;
+    }
+}
+
+.cube {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spin-cube 8s linear infinite;
+}
+
+.cube-face {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: 2px solid var(--color-primary);
+    background: rgba(0, 217, 255, 0.1);
+    color: var(--color-primary);
+    opacity: 0.8;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+.cube-face-front {
+    transform: translateZ(60px);
+}
+
+.cube-face-back {
+    transform: rotateY(180deg) translateZ(60px);
+}
+
+.cube-face-right {
+    transform: rotateY(90deg) translateZ(60px);
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.2);
+}
+
+.cube-face-left {
+    transform: rotateY(-90deg) translateZ(60px);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.cube-face-top {
+    transform: rotateX(90deg) translateZ(60px);
+}
+
+.cube-face-bottom {
+    transform: rotateX(-90deg) translateZ(60px);
+}
+
+/* Grid Background */
+.grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.03) 25%, rgba(0, 217, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.03) 75%, rgba(0, 217, 255, 0.03) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 217, 255, 0.03) 25%, rgba(0, 217, 255, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.03) 75%, rgba(0, 217, 255, 0.03) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Utility Classes */
+.accent-primary {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.accent-secondary {
+    color: var(--color-secondary);
+    font-weight: 700;
+}
+
+.text-muted {
+    color: var(--color-muted-fg);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    z-index: 1001;
+    width: 0%;
+}
+
+/* Custom Cursor */
+.cursor {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+}
+
+@media (min-width: 1024px) {
+    .cursor {
+        display: block;
+    }
+}
+
+/* Section Base */
+section {
+    position: relative;
+    z-index: 10;
+    padding: var(--spacing-2xl) 0;
+}

@@ -1,0 +1,70 @@
+/* Space Grotesk */
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/space-grotesk/SpaceGrotesk-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/space-grotesk/SpaceGrotesk-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/space-grotesk/SpaceGrotesk-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/space-grotesk/SpaceGrotesk-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Space Mono */
+@font-face {
+    font-family: 'Space Mono';
+    src: url('./fonts/space-mono/SpaceMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('./fonts/space-mono/SpaceMono-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* CSS to handle theme toggle visibility based on html class */
+.icon-sun, .icon-moon { display: none; }
+
+/* When in dark mode (default), show the sun icon to switch to light mode */
+html.dark .icon-sun { display: inline-block; }
+html.dark .icon-moon { display: none; }
+
+/* When NOT in dark mode (sun-mode), show the moon icon to switch to dark mode */
+html:not(.dark) .icon-sun { display: none; }
+html:not(.dark) .icon-moon { display: inline-block; }
+
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.form-status {
+    margin-top: 15px;
+    font-size: 14px;
+}

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" href="/icon/hexagon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="layout.css">
+
+    <title>TKS - Elektrotechnik & Digitale Vermessung</title>
+
+    <script>
+      // Disable automatic scroll restoration
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      // Force scroll to top on load
+      window.addEventListener('load', function () {
+        window.scrollTo(0, 0);
+      });
+    </script>
+</head>
+
+<body> <!-- Theme wird via JS gesteuert -->
+    <!-- LOADING OVERLAY WITH JELLY TRIANGLE -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-container">
+            <div class="jelly-triangle">
+                <div class="jelly-triangle__dot"></div>
+                <div class="jelly-triangle__traveler"></div>
+            </div>
+            <svg width="0" height="0" class="jelly-maker">
+                <defs>
+                    <filter id="uib-jelly-triangle-ooze">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="7.3" result="blur"></feGaussianBlur>
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="ooze"></feColorMatrix>
+                        <feBlend in="SourceGraphic" in2="ooze"></feBlend>
+                    </filter>
+                </defs>
+            </svg>
+            <p class="loading-text">TKS wird geladen...</p>
+        </div>
+    </div>
+
+    <!-- HEADER PLACEHOLDER (Navbar wird hier via include.js geladen) -->
+    <div id="header-placeholder"></div>
+
+    <!-- GRID BACKGROUND -->
+    <div class="grid-bg"></div>
+
+    <!-- 3D CUBE CONTAINER -->
+    <div class="cube-container" id="cubeContainer">
+        <div class="cube">
+            <div class="cube-face cube-face-front">TKS</div>
+            <div class="cube-face cube-face-back">TECH</div>
+            <div class="cube-face cube-face-right">SOLUTIONS</div>
+            <div class="cube-face cube-face-left">INNOVATION</div>
+            <div class="cube-face cube-face-top">FUTURE</div>
+            <div class="cube-face cube-face-bottom">READY</div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-grid">
+                    <div class="hero-eye-catcher">
+                        <div class="animated-circle circle-1"></div>
+                        <div class="animated-circle circle-2"></div>
+                        <div class="animated-circle circle-3"></div>
+                        <div class="eye-catcher-text">
+                            <div class="eye-text-main">TKS</div>
+                            <div class="eye-text-sub">Elektrotechnik & Digitale Vermessung</div>
+                        </div>
+                    </div>
+                    <div class="hero-text">
+                        <h1 class="hero-title">Technologie trifft <span class="accent-primary">Innovation</span></h1>
+                        <p class="hero-description">
+                            Wir kombinieren modernste Drohnentechnologie mit Elektrotechnik-Expertise. 
+                            Präzise Vermessungen, intelligente PV-Lösungen und professionelle Elektroinstallationen 
+                            für Ihr Projekt.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#elektro" class="btn-primary">TKS Elektro</a>
+                            <a href="#survey" class="btn-secondary">TKS Survey</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STATS SECTION -->
+                <div class="stats-section">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Projekte</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="10">0</div>
+                        <div class="stat-label">Jahre Erfahrung</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">% Zufriedenheit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TKS ELEKTRO SECTION -->
+    <section class="elektro-section" id="elektro">
+        <div class="container">
+            <h2 class="section-title">TKS <span class="accent-primary">Elektrotechnik</span></h2>
+            <p class="section-subtitle">Professionelle Elektroinstallationen und PV-Anlagen für Privat und Gewerbe</p>
+
+            <div class="elektro-grid">
+                <div class="elektro-card scroll-animate">
+                    <div class="elektro-icon">⚡</div>
+                    <h3 class="elektro-title">Elektroinstallationen</h3>
+                    <p class="elektro-description">
+                        Moderne Elektroinstallationen nach neuesten Standards. Von Wohnhäusern bis zu Industrieanlagen.
+                    </p>
+                </div>
+
+                <div class="elektro-card scroll-animate">
+                    <div class="elektro-icon">☀️</div>
+                    <h3 class="elektro-title">PV-Anlagen</h3>
+                    <p class="elektro-description">
+                        Planung und Installation von Photovoltaikanlagen für maximale Energieeffizienz.
+                    </p>
+                </div>
+
+                <div class="elektro-card scroll-animate">
+                    <div class="elektro-icon">🔧</div>
+                    <h3 class="elektro-title">Wartung & Service</h3>
+                    <p class="elektro-description">
+                        Regelmäßige Wartung und schneller Service für Ihre Elektroanlage.
+                    </p>
+                </div>
+
+                <div class="elektro-card scroll-animate">
+                    <div class="elektro-icon">🏢</div>
+                    <h3 class="elektro-title">Gewerbe-Lösungen</h3>
+                    <p class="elektro-description">
+                        Maßgeschneiderte Elektrolösungen für Ihr Gewerbe und Ihre Industrie.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TKS SURVEY SECTION -->
+    <section class="survey-section" id="survey">
+        <div class="container">
+            <h2 class="section-title">TKS <span class="accent-secondary">Survey</span></h2>
+            <p class="section-subtitle">Hochpräzise Drohnenvermessungen und 3D-Aufnahmen</p>
+
+            <div class="survey-grid">
+                <div class="survey-card scroll-animate">
+                    <div class="survey-icon">🚁</div>
+                    <h3 class="survey-title">Drohnenvermessung</h3>
+                    <p class="survey-description">
+                        Präzise Luftaufnahmen und Vermessungen mit modernster Drohnentechnologie.
+                    </p>
+                </div>
+
+                <div class="survey-card scroll-animate">
+                    <div class="survey-icon">📐</div>
+                    <h3 class="survey-title">Aufmaß & Planung</h3>
+                    <p class="survey-description">
+                        Detaillierte Aufmaße und 3D-Modelle für Ihre Projekte.
+                    </p>
+                </div>
+
+                <div class="survey-card scroll-animate">
+                    <div class="survey-icon">📊</div>
+                    <h3 class="survey-title">Mengenermittlung</h3>
+                    <p class="survey-description">
+                        Genaue Mengenermittlungen für Baustoffe und Materialien.
+                    </p>
+                </div>
+
+                <div class="survey-card scroll-animate">
+                    <div class="survey-icon">🏗️</div>
+                    <h3 class="survey-title">Bestandsaufnahme</h3>
+                    <p class="survey-description">
+                        Vollständige Dokumentation und Analyse von Bestandsgebäuden.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCROLL STEPS SECTION -->
+    <section class="scroll-steps">
+        <div class="container">
+            <h2 class="section-title">Unser <span class="accent-primary">Prozess</span></h2>
+            <p class="section-subtitle">So arbeiten wir mit Ihnen zusammen</p>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Beratung & Planung</h3>
+                        <p>In einem ersten Gespräch klären wir Ihre Anforderungen und Wünsche.</p>
+                    </div>
+                </div>
+                <div class="step-divider"></div>
+
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Vermessung & Aufnahme</h3>
+                        <p>Mit Drohnen und modernen Technologien erfassen wir alle notwendigen Daten.</p>
+                    </div>
+                </div>
+                <div class="step-divider"></div>
+
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Analyse & Auswertung</h3>
+                        <p>Wir erstellen detaillierte Berichte und 3D-Modelle für Ihre Planung.</p>
+                    </div>
+                </div>
+                <div class="step-divider"></div>
+
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Umsetzung & Support</h3>
+                        <p>Wir begleiten Sie bei der Umsetzung und bieten umfassenden Support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Unsere <span class="accent-primary">Projekte</span></h2>
+            <p class="section-subtitle">Referenzen aus verschiedenen Bereichen</p>
+
+            <div class="portfolio-grid">
+                <a href="point.html" class="portfolio-item scroll-animate">
+                    <div class="portfolio-image">
+                        <div class="portfolio-number">01</div>
+                        <img src="./img/pv.jpg" alt="PV-Anlagen-Planung" class="portfolio-thumb">
+                        <span>PV-Anlagen-Planung</span>
+                        <div class="scan-lines"></div>
+                    </div>
+                    <div class="portfolio-overlay"></div>
+                </a>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-image">
+                        <div class="portfolio-number">02</div>
+                        <img src="./img/pointcloud_arch.png" alt="digitaler Zwilling" class="portfolio-thumb">
+                        <div class="scan-lines"></div>
+                        <span>Digitaler Zwilling</span>
+                    </div>
+                    <div class="portfolio-overlay"></div>
+                </div>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-image">
+                        <div class="portfolio-number">03</div>
+                        <img src="./img/loxone.jpg" alt="loxone" class="portfolio-thumb">
+                        <div class="scan-lines"></div>
+                        <span>Elektroinstallation</span>
+                    </div>
+                    <div class="portfolio-overlay"></div>
+                </div>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-image">
+                        <div class="portfolio-number">04</div>
+                        <img src="./img/pointcloud.jpg" alt="pointcloud" class="portfolio-thumb">
+                        <div class="scan-lines"></div>
+                        <span>Aufmaß</span>
+                    </div>
+                    <div class="portfolio-overlay"></div>
+                </div>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-image">
+                        <div class="scan-lines"></div>
+                        <div class="portfolio-number">05</div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <span>3D-Modell</span>
+                    </div>
+                </div>
+
+                <div class="portfolio-item scroll-animate">
+                    <div class="portfolio-image">
+                        <div class="scan-lines"></div>
+                        <div class="portfolio-number">06</div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <span>Mengenermittlung</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="kontakt">
+        <div class="container">
+            <h2 class="section-title">Kontaktieren Sie <span class="accent-primary">uns</span></h2>
+            <p class="section-subtitle">Wir freuen uns auf Ihr Projekt</p>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-label">Telefon</div>
+                        <div class="contact-value">Koch Thomas: <a href="tel:+393472169151">+39 347 216 9151</a>
+                        </div>
+                        <div class="contact-value">Tappeiner Robert: <a href="tel:+393487348496">+39 348 7348496</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value"><a href="mailto:info@tks-solution.com?subject=Anfrage">info@tks-solution.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Adresse</div>
+                        <div class="contact-value">Taufers i.M. | Südtirol | Italien</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Öffnungszeiten</div>
+                        <div class="contact-value">Mo-Fr: 08:00 - 12:00 | 13:00 - 17:00</div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xyyrggrv" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ihr Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Ihre Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Ihre Telefonnummer">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Ihre Nachricht" rows="5" required></textarea>
+                    </div>
+
+                    <strong>UPLOAD: PDF | DWG | DXF | MAX. 4 DATEIEN | MAX. 5MB / DATEI</strong>
+
+                    <div class="form-group">
+                        <label class="upload-label">Dateien anhängen (PDF | DWG | DXF)</label>
+                        <div class="upload-file-area">
+                            <input type="hidden" name="pdf_link" id="pdf_link">
+                            <input type="file" multiple class="form-file-input" id="fileUploadInput" accept=".pdf,.dwg,.dxf">
+                            <div class="upload-file-message">
+                                <span class="upload-icon">📤</span>
+                                <p>Dateien auswählen oder ziehen</p>
+                                <small>PDF, DWG, DXF</small>
+                            </div>
+                        </div>
+                        <div class="upload-file-list" id="fileList"></div>
+                    </div>
+
+                    <div id="formStatus" class="form-status"></div>
+                    <button type="submit" class="btn-primary" id="submitBtn">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER (Footer wird hier via include.js geladen) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- SCRIPTS -->
+    <script src="include.js"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
