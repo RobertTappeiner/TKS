@@ -12,11 +12,11 @@
     --color-border: #d1d5db;
     --color-muted: #9ca3af;
     --color-muted-fg: #6b7280;
-    --color-primary: #00d9ff;
-    --color-primary-dark: #0099cc;
+    --color-primary: #4a3ece;
+    --color-primary-dark: #0052cc;
     --color-secondary: #ff006e;
-    --color-accent: #00f5ff;
-    --color-accent-glow: rgba(0, 217, 255, 0.3);
+    --color-accent: #4a3ece;
+    --color-accent-glow: rgba(17, 0, 255, 0.3);
     
     /* Fonts */
     --font-display: 'Space Grotesk', sans-serif;
@@ -292,7 +292,7 @@ code, .mono {
 .jelly-triangle {
     --uib-size: 2.8rem;
     --uib-speed: 1.75s;
-    --uib-color: #00d9ff;
+    --uib-color: #0088ff;
     position: relative;
     height: var(--uib-size);
     width: var(--uib-size);
@@ -308,7 +308,7 @@ code, .mono {
     height: 33%;
     background: var(--uib-color);
     border-radius: 100%;
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 21, 255, 0.5);
 }
 
 .jelly-triangle__dot {
@@ -386,7 +386,7 @@ code, .mono {
     color: var(--color-primary);
     opacity: 0.8;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+    box-shadow: 0 0 20px rgba(60, 0, 255, 0.2);
 }
 
 .cube-face-front {
@@ -408,7 +408,7 @@ code, .mono {
     transform: rotateY(-90deg) translateZ(60px);
     border-color: var(--color-accent);
     color: var(--color-accent);
-    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+    box-shadow: 0 0 20px rgba(68, 0, 255, 0.2);
 }
 
 .cube-face-top {

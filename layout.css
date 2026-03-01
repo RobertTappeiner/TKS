@@ -29,21 +29,11 @@
 .logo-section {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    flex-direction: column;
 }
 
-.logo-box {
-    width: calc(2.8rem + 3px);
-    height: calc(2.8rem + 3px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url('icon/hex_blue.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: relative;
-    flex-shrink: 0;
+.logo-image {
+    width: 100px;
 }
 
 .logo-text {
